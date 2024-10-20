@@ -1,7 +1,6 @@
 import React from "react";
-import { FaCheckCircle } from "react-icons/fa"; // Importing an icon for added visual interest
-
-const AboutUs = () => {
+import { FaCheckCircle } from "react-icons/fa"; 
+const About = () => {
   return (
     <div className="w-full mx-auto p-8 bg-gray-100 rounded-lg shadow-lg mt-2">
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-6">
@@ -107,4 +106,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default About;

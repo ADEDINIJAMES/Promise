@@ -3,8 +3,7 @@ import React from "react";
 import Hero from "../Component/Hero";
 import Services from "../Component/Services";
 import ContactUs from "../Component/ContactUs";
-import AboutUs from "../Component/about";
-
+import About from "../Component/about";
 const companyName = "Promise Land Global Resources";
 
 function Home() {
@@ -19,7 +18,7 @@ function Home() {
       <div className="overflow-y-auto flex-grow">
         <Hero />
         <Services />
-        <AboutUs />
+        <About />
         <ContactUs />
       </div>
     </div>
