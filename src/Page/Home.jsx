@@ -3,7 +3,7 @@ import React from "react";
 import Hero from "../Component/Hero";
 import Services from "../Component/Services";
 import ContactUs from "../Component/ContactUs";
-import About from "../Component/about";
+import About from "../Component/About";
 const companyName = "Promise Land Global Resources";
 
 function Home() {
