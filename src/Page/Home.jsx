@@ -3,7 +3,6 @@ import React from "react";
 import Hero from "../Component/Hero";
 import Services from "../Component/Services";
 import ContactUs from "../Component/ContactUs";
-// import Footer from "../Component/Footer";
 import AboutUs from "../Component/about";
 
 const companyName = "Promise Land Global Resources";
@@ -22,7 +21,6 @@ function Home() {
         <Services />
         <AboutUs />
         <ContactUs />
-        {/* <Footer /> */}
       </div>
     </div>
   );
