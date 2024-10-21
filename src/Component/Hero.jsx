@@ -10,6 +10,7 @@ import vet from "../assets/vet.webp";
 import hotel from "../assets/hotel.jpg";
 import property from "../assets/buysell.jpeg";
 import build from "../assets/build.jpeg";
+import { Link } from "react-router-dom";
 
 function Hero() {
   const [effect, setEffect] = useState("fade"); // Choose effect dynamically
@@ -113,11 +114,11 @@ function Hero() {
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white p-4">
               <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
               <p className="text-lg mb-4">{service.description}</p>
-              <a href={service.link}>
+              <Link to={service.link}>
                 <button className="bg-gray-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-lg">
                   Learn More
                 </button>
-              </a>
+              </Link>
             </div>
           </motion.div>
         ))}
