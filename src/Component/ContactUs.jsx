@@ -9,6 +9,9 @@ function ContactUs() {
     message: "",
   });
 
+  // State to manage modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Handle input change
   const handleChange = (e) => {
     setFormData({
@@ -22,6 +25,8 @@ function ContactUs() {
     e.preventDefault();
     // Here you would typically send the formData to the backend
     console.log("Form Submitted:", formData);
+    // Open the modal after submission
+    setIsModalOpen(true);
     // Reset form after submission
     setFormData({
       name: "",
@@ -31,8 +36,13 @@ function ContactUs() {
     });
   };
 
+  // Close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="container mx-auto p-6 w-full  bg-gray-100 rounded-lg shadow-lg mt-4">
+    <div className="container mx-auto p-6 w-full bg-gray-100 rounded-lg shadow-lg mt-4">
       <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -115,6 +125,37 @@ function ContactUs() {
           Submit
         </button>
       </form>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
+            <h3 className="text-xl font-bold mb-4">
+              Thank you for reaching out!
+            </h3>
+            <p className="mb-4">
+              We will get in touch with you shortly. You can also contact us
+              via:
+            </p>
+            <p className="mb-2">
+              <strong>Email:</strong> lukedotun@gmail.com
+            </p>
+            <p className="mb-2">
+              <strong>Phone:</strong> +234 8034237637
+            </p>
+            <p className="mb-4">
+              <strong>Address:</strong> No 6, Onigbale Street, Sagamu, Ogun
+              State, Nigeria
+            </p>
+            <button
+              onClick={closeModal}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
