@@ -185,6 +185,7 @@ function ContactUs() {
     email: "",
     service: "",
     message: "",
+    phone: "",
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -204,18 +205,21 @@ function ContactUs() {
     // Send the form data via EmailJS
     emailjs
       .send(
-        "service_yi1027m", // Replace with your actual Service ID
-        "template_bza44ls", // Replace with your EmailJS Template ID
+        VITE_EMAILJS_SERVICE_ID,
+        VITE_EMAILJS_TEMPLATE_ID, // Replace with your EmailJS Template ID
         formData, // Form data sent as an object
-        "94khjgkcPomew4Dk7" // Replace with your EmailJS Public Key/User ID
+        VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
         (response) => {
           console.log("Email sent successfully:", response.text);
           setIsModalOpen(true); // Show success modal
+          console.log(VITE_EMAILJS_SERVICE_ID);
         },
         (error) => {
+          setIsModalOpen(true);
           console.error("Failed to send email:", error.text);
+          console.log(import.meta.env.VITE_EMAILJS_SERVICE_ID);
         }
       );
 
@@ -225,6 +229,7 @@ function ContactUs() {
       email: "",
       service: "",
       message: "",
+      phone: "",
     });
   };
 
@@ -266,7 +271,20 @@ function ContactUs() {
             required
           />
         </div>
-
+        <div>
+          <label className="block mb-2" htmlFor="email">
+            Phone Number
+          </label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
         <div>
           <label className="block mb-2" htmlFor="service">
             Choose a Service
@@ -327,7 +345,8 @@ function ContactUs() {
             </h3>
             <p className="mb-4">
               We will get in touch with you shortly. You can also contact us
-              via:
+              via(Please reach out to us if you don't hear from us in the next
+              30 minutes to 1 hour). :
             </p>
             <p className="mb-2">
               <strong>Email:</strong> lukedotun@gmail.com
