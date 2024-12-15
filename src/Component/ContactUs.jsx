@@ -175,7 +175,6 @@
 // }
 
 // export default ContactUs;
-
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 
@@ -205,21 +204,19 @@ function ContactUs() {
     // Send the form data via EmailJS
     emailjs
       .send(
-        VITE_EMAILJS_SERVICE_ID,
-        VITE_EMAILJS_TEMPLATE_ID, // Replace with your EmailJS Template ID
+        import.meta.env.VITE_EMAILJS_SERVICE_ID, // Corrected access to env variable
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Corrected access to env variable
         formData, // Form data sent as an object
-        VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Corrected access to env variable
       )
       .then(
         (response) => {
           console.log("Email sent successfully:", response.text);
           setIsModalOpen(true); // Show success modal
-          console.log(VITE_EMAILJS_SERVICE_ID);
         },
         (error) => {
           setIsModalOpen(true);
           console.error("Failed to send email:", error.text);
-          console.log(import.meta.env.VITE_EMAILJS_SERVICE_ID);
         }
       );
 
@@ -271,8 +268,9 @@ function ContactUs() {
             required
           />
         </div>
+
         <div>
-          <label className="block mb-2" htmlFor="email">
+          <label className="block mb-2" htmlFor="phone">
             Phone Number
           </label>
           <input
@@ -285,6 +283,7 @@ function ContactUs() {
             required
           />
         </div>
+
         <div>
           <label className="block mb-2" htmlFor="service">
             Choose a Service
